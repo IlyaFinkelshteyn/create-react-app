@@ -1,6 +1,5 @@
 image: 
 - Visual Studio 2017
-- Previous Visual Studio 2017
 
 environment:
   matrix:
@@ -49,6 +48,7 @@ install:
 #  - ps: |
 #      (New-Object Net.WebClient).DownloadFile("https://yarnpkg.com/latest.msi", "$env:temp\yarn.msi")
 #      cmd /c start /wait msiexec.exe /i $env:temp\yarn.msi /quiet /qn /norestart
+  - choco install yarn --version 1.9.2
 
 build: off
 
