@@ -11,11 +11,7 @@ environment:
     - nodejs_version: 10
       test_suite: "installs"
     - nodejs_version: 10
-      test_suite: "installs"
-    - nodejs_version: 10
-      test_suite: "installs"
-    - nodejs_version: 10
-      test_suite: "installs"      
+      test_suite: "installs"    
   #  - nodejs_version: 10
   #    test_suite: "kitchensink"
   #  - nodejs_version: 10
@@ -29,11 +25,7 @@ environment:
     - nodejs_version: 8
       test_suite: "installs" 
     - nodejs_version: 8
-      test_suite: "installs"
-    - nodejs_version: 8
-      test_suite: "installs"
-    - nodejs_version: 8
-      test_suite: "installs"       
+      test_suite: "installs"    
   #  - nodejs_version: 8
   #    test_suite: "kitchensink"
   #  - nodejs_version: 8
@@ -66,7 +58,7 @@ test_script:
   - node --version
   - npm --version
   - yarn --version
-  - appveyor-retry bash tasks/e2e-%test_suite%.sh
+  - bash tasks/e2e-%test_suite%.sh
 
-#on_finish:
-#  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+on_error:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
