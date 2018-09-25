@@ -1,4 +1,6 @@
-image: Visual Studio 2017
+image: 
+- Visual Studio 2017
+- Previous Visual Studio 2017
 
 environment:
   matrix:
@@ -44,9 +46,9 @@ platform:
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
-  - ps: |
-      (New-Object Net.WebClient).DownloadFile("https://yarnpkg.com/latest.msi", "$env:temp\yarn.msi")
-      cmd /c start /wait msiexec.exe /i $env:temp\yarn.msi /quiet /qn /norestart
+#  - ps: |
+#      (New-Object Net.WebClient).DownloadFile("https://yarnpkg.com/latest.msi", "$env:temp\yarn.msi")
+#      cmd /c start /wait msiexec.exe /i $env:temp\yarn.msi /quiet /qn /norestart
 
 build: off
 
@@ -60,5 +62,5 @@ test_script:
   - yarn --version
   - bash tasks/e2e-%test_suite%.sh
 
-on_failure:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#on_failure:
+#  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
