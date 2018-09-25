@@ -60,5 +60,5 @@ test_script:
   - yarn --version
   - bash tasks/e2e-%test_suite%.sh
 
-on_error:
+on_failure:
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
