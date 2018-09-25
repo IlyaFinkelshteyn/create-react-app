@@ -1,7 +1,8 @@
 image: 
-- Previous Visual Studio 2017
+- Visual Studio 2017
 
 environment:
+  APPVEYOR_BUILD_WORKER_CLOUD: GCE
   matrix:
   #  - nodejs_version: 10
   #    test_suite: "simple"
@@ -45,10 +46,10 @@ platform:
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
-#  - ps: |
-#      (New-Object Net.WebClient).DownloadFile("https://yarnpkg.com/latest.msi", "$env:temp\yarn.msi")
-#      cmd /c start /wait msiexec.exe /i $env:temp\yarn.msi /quiet /qn /norestart
-  - choco install yarn --version 1.7.0
+  - ps: |
+      (New-Object Net.WebClient).DownloadFile("https://yarnpkg.com/latest.msi", "$env:temp\yarn.msi")
+      cmd /c start /wait msiexec.exe /i $env:temp\yarn.msi /quiet /qn /norestart
+#  - choco install yarn --version 1.7.0
 
 build: off
 
